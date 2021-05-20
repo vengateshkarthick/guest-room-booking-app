@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title >AreoRooms.com </title>
+    <meta name="title" content="A perfect rooms for perfect travelers">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <meta name="theme-color" content="#ffff"/>
+</head>
+<body>
+    <!--menu bar with links-->
+    <div class="mnu">
+        <div class="mnu_icon flex">
+                <span class="logo">AreoRooms</span>
+                <span id="icon" tabindex="0">
+                    <i class="fa fa-bars" aria-hidden="true" ></i>
+                </span>
+        </div>
+        <nav class="mnu_items font" id="mnlist">
+                
+                        <li tabindex=0 onclick="window.alert('Due to covid situation We have restricted our services We appreciate your patience')" ><a href="#" >Host your house</a></li>
+                        <li tabindex="0"><a href="#hstexp" onclick="UpdateHostForm()">Host your Experiecnce</a></li>
+                        <li tabindex="0"> <a href="#about" >About us</a>  </li> 
+                        <li tabindex="0">
+                            <a href="#signin" onclick="UpdateSignInForm()" class="signIn"><i class="fa fa-user-circle-o" aria-hidden="true"></i>Sign In </a>   
+                        </li>
+                
+        </nav>
+        
+    </div>
+
+    <!--header-->
+    <header class="hd flex " id="hdr" aria-label="header">
+        <span class="font">More than <br><count id='count'>0</count><br> families glad to invite new members each day!</span>
+        <img src="../image/header.jpg" alt="hotels">
+       
+    </header>
+
+        <!--search_box-->
+        <div class="srch_box flex">
+        <!--search by location-->
+            <span class="inp1">
+                <label for="srcbx_place">Where are you going</label>
+                <input type="text"  name="s_place" class="srch font plsrch" id="srcbx_place" maxlength="30" placeholder="Search with regions">
+            </span>
+        <!--search by checkin date-->
+        
+            <span class="inp2">
+                    <label for="srch_chkin">When is your Checkin</label>
+                    <input type="date" name="s_date" id="srch_chkin" class="srch font chkout" placeholder="Search with Checkin">
+            </span>
+        <!--search by checkout date-->
+        
+            <span class="inp3">
+                    <label for="srch_chkout">When is your Checkout</label>
+                    <input type="date" name="s_date" id="srch_chkout" class="srch chkin font" placeholder="Search with Checkin">
+            </span>
+        <!--search icon-->
+
+             <div class="search">
+                 <i class="fa fa-search" role="button" aria-hidden="true"></i>
+            </div>
+            
+        </div>
+        <!--Dummy result box appears while searching on location-->
+        <div class="popup">
+                <figure class="res flex srch_res">
+                    <img src="../image/nature.jpeg" alt="cities">
+                    <figcaption class="font">Explore by destinations</figcaption>
+                </figure>
+        </div>
+
+<!--Exploring  Rooms with data-key API and static JSON DB-->
+    <section class="expby" id="exp">
+        <h2>Explore by</h2>
+       <!-- A search catologue with two rows and 3 columns -->
+        <!--row1 starts-->
+                    <div class="row1 flex">
+                                <!--column 1-->
+                                    <div class="flex">
+                                        <img src="../image/home1.jpg"   aria-label="nature" alt="NatureRooms">
+                                        <h3 class="font">
+                                            Row Houses<br>
+                                            Feel free to join a new family
+                                            <span>
+                                            <h4>&starf; &starf; &starf; &starf; &star; </h4>
+                                            </span>
+                                            <!--Constraints for search-->
+                                            <span>
+                                                <a href="#homeres">
+                                                <button class="getRooms btn" data-key="rowhouse" tabindex="0">Get Rooms</button>
+                                                </a>
+                                                </span>
+                                        </h3>
+                                    </div>
+                                    <!--column 2-->
+                                    <div class="flex">
+                                        <img src="../image/day.jpg" aria-label="nature" alt="Sunrise" >
+                                        <h3 class="font">
+                                            Book rooms for both<br>
+                                            day and nights
+                                            <span>
+                                            <h4>&starf; &starf; &starf; &starf; &star;</h4>
+                                            </span>
+                                            <!--Constraints for search-->
+
+                                            <span>
+                                                <a href="#homeres">
+                                                <button  class="getRooms btn" data-key="daynight" tabindex="0">Get Rooms</button>
+                                                </a>
+                                            </span>
+                                                
+                                        </h3>
+                                    </div>
+                                <!--column 3-->
+                                    
+                                    <div class="flex">
+                                        <img src="../image/mountain.jpg" aria-label="nature"  alt="Mountian houses">
+                                        <h3 class="font">
+                                            Tree houses<br>
+                                            Good Mountain views
+                                            <span>
+                                            <h4>&starf; &starf; &starf; &star; &star;</h4>
+                                            </span>
+                                            <!--Constraints for search-->
+
+                                            <span>
+                                                <a href="#homeres">
+                                                <button class="getRooms btn" data-key="apartments" tabindex="0">Get Rooms</button>
+                                                </a>
+                                            </span>
+                                        </h3>
+                                    </div>
+                    </div>
+        <!--row1 ends-->
+        
+                    
+                    <!--row2 starts-->
+                    <div class="flex row2">
+                                <!--column 1-->
+
+                                <div class="flex">
+                                    <img src="../image/boathouse.jpg" aria-label="nature" alt="Boathouse" >
+                                    <h3 class="font">
+                                        Boat house rooms<br>
+                                        Wave your time here 
+                                        <span>
+                                        <h4>&starf; &starf; &starf; &star; &star;</h4>
+                                        </span>
+                                            <!--Constraints for search-->
+
+                                        <span>
+                                            <a href="#homeres">
+                                            <button class="getRooms btn" id="getRooms" data-key="boathouse" tabindex="0">Get Rooms</button>
+                                            </a>
+                                        </span>
+                                </h3>
+                                </div>
+                                <!--column 2-->
+                                
+                                <div class="flex">
+                                    <img src="../image/rowhouse.jpg"  aria-label="nature" alt="Rowhouses">
+                                    <h3 class="font">
+                                        Book Rooms<br>
+                                        Good Houses from villas
+                                        <span>
+                                        <h4>&starf; &starf; &starf; &star; &star;</h4>
+                                        </span>
+                                            <!--Constraints for search-->
+
+                                        <span>
+                                            <a href="#homeres">
+                                            <button class="getRooms btn" data-key="villa" tabindex="0">Get Rooms</button>
+                                            </a>
+                                        </span>
+                                        
+                                    </h3>
+                                </div>
+                                <!--column 3-->
+
+                                <div class="flex">
+                                    <img src="../image/night.jpg"  aria-label="nature" alt="Nightrooms">
+                                    <h3 class="font">
+                                        Book Rooms<br>
+                                        Stay for a good nightmare  
+                                        <span>
+                                        <h4>&starf; &starf; &starf; &star; &star;</h4>
+                                        </span>
+                                            <!--Constraints for search-->
+
+                                        <span>
+                                            <a href="#homeres">
+                                            <button class="getRooms btn" data-key="night" tabindex="0">Get Rooms</button>
+                                            </a>
+                                        </span>
+                                        
+                                    </h3>
+                                </div>
+                    </div>
+            <!--row2 ends-->
+
+        <!--Creating three static search results based on data-key API-->
+        <div class=" flex rowres homeres" id="homeres">
+            <div class=" flex card home">
+                <!--Room photos-->
+                <img alt="rooms" class="resImg">
+                <!--Room details-->
+                <div class="content">
+                    <h5>
+                        <span class="members"></span>
+                        <br>
+                        <span class="dates"></span>
+                        <br>
+                        <span class="bed"></span>
+
+
+                    </h5>
+                    <ratings class="ratings">&starf; &starf; &starf; &starf; &star;</ratings>
+                    <button class="btn chkbtn">Book</button>
+                </div>
+            </div>
+
+        
+            <div class=" flex card home">
+                <!--Room photos-->
+                    <img alt="rooms" class="resImg">
+                <!--Room Details-->
+                    <div class="content">
+                        <h5>
+                            <span class="members"></span>
+                            <br>
+                            <span class="dates"></span>
+                            <br>
+                            <span class="bed"></span>
+                        </h5>
+                        <ratings class="ratings">&starf; &starf; &starf; &starf; &star;</ratings>
+                        <button class="btn chkbtn">Book</button>
+                    </div>
+            </div>
+            
+            <div class=" flex card home">
+                <!--Room photos-->
+                <img alt="rooms" class="resImg">
+                <!--Room Details-->
+                <div class="content">
+                    <h5>
+                        <span class="members"></span>
+                        <br>
+                        <span class="dates"></span>
+                        <br>
+                        <span class="bed"></span>
+                    </h5>
+                    <ratings class="ratings">&starf; &starf; &starf; &starf; &star;</ratings>
+                    <button class="btn chkbtn">Book</button>
+                </div>
+        </div>
+    </div>
+
+        <!--result ends-->
+
+    </section>
+    <!--about us-->
+    <div id="about">
+        <h2>About Us</h2>
+            <div class="slides" id="slides">
+                    <h3 class="slideContent">
+                        AreoRooms India's leading 
+                        Paying Guest booking Website<br>
+                        We are serving all over India<br>
+                        We have more than 8000+ paying guest's
+                    </h3>
+                    
+                    <img class="slideImage" src="../image/background2.jpg" alt="payment">
+            </div>
+    </div>
+
+    <!--form-->
+    <div id="allforms">
+        <!--host experience-->
+        
+            <div class="flex inner">            
+                            <fieldset id="hstexp">
+                            
+                                <legend>Host your Experience</legend>
+                                <form action="#" id="experience" method="post">
+                                <div>
+                                    <label for="Username">User ID</label><br>
+                                    <input type="text" placeholder="username" autocomplete="name" required aria-label="UserID" name="UserId" id="Username"><br>
+                                    <label for="mailId">Mail ID</label><br>
+                                    <input type="email" placeholder="example@example.com" maxlength="25"  required max="25"  aria-label="UserEmail" autocomplete="email" name="Email" id="mailId"><br>
+                                    <label for="Usreview">Review</label><br>
+                                    <textarea name="review" id="Usreview" rows="4" cols="50" required aria-multiline="true"> </textarea><br>
+                                    <input type="submit"  value="Submit" id="rvsubt" name="rvsubmit">
+                                </div>
+
+                            </form>
+                            </fieldset>
+                
+                <!--SignIn-->
+                    <fieldset id="signin">
+                        <legend>Sign In</legend>
+                    <form action="#" id="SignIn" method="post">
+                        <div>
+                        <label for="mailId">Mail ID</label><br>
+                            <input type="email" placeholder="example@example.com" required maxlength="25" max="25"  aria-label="UserEmail" autocomplete="email" name="ChkEmail" id="ChkEmailId"><br>
+                            <label for="password">Password</label><br>
+                            
+                            <input type="password" name="ChkUsrpass" id="ChkUsrpass" required placeholder="password" aria-label="password" pattern="(?.*\d)(?.*[a-z])(?.*[A-Z]).{8,}">    
+                                
+                            <br>
+                            <input type="submit"  value="Sign In" id="signIn" name="signIn" role="button"> <input type="button"  value="New User? Create" role="button" id="Create" onclick="UpdateSignUpForm()" >
+
+                        </div>
+
+                    </form>
+                    </fieldset>
+                <!--SignUp-->
+                    <fieldset id="signup">
+                        
+                        <legend>Sign Up</legend>
+                        <!--Dummy sign in with Google img-->
+                        <span class="Gbtn">
+                            <img src="../image/google.jpg" alt="Google">
+                            <input type='button' value="Sign In with Google" class="button">
+                        </span>
+                        
+                    <form action="#" id="SignUp" method="post">
+                       
+                        <div>
+                            <label for="Username">User ID</label><br>
+                            <input type="text" placeholder="username" required autocomplete="name" aria-label="UserID" name="CrtUserId" id="CrtUsername"><br>
+                            <label for="mailId">Mail ID</label><br>
+                            <input type="email" placeholder="example@example.com" required maxlength="25" max="25"  aria-label="UserEmail" autocomplete="email" name="CrtEmail" id="CrtmailId"><br>
+                            <label for="password">Password</label><br>
+                            <span>
+                                <input type="password" name="pass" id="Usrpass" required placeholder="password" aria-label="password" pattern="(?.*\d)(?.*[a-z])(?.*[A-Z]).{8,}">
+                                <input type="password" name="repass" id="RetypeeUsrpass" required  placeholder="retype-password" aria-label="password" pattern="(?.*\d)(?.*[a-z])(?.*[A-Z]).{8,}">
+                                
+                            </span><br>
+                            <input type="submit"  value="Register" id="register" name="signUp" role="button">         </div>
+
+                    </form>
+                   
+                    </fieldset>
+
+    </div>
+
+    </div>
+    <!--Backend alert-->
+        <div class="backend">
+            <div class="msg" id="msg">
+                AreoRooms has restricted its services<br>
+                and working on backend,<br>
+                We appriciate your patience 
+            </div>
+            <div class="round">
+                <img src="../image/avatar.png" alt="avatar_help" >
+            </div>
+            
+        </div>
+    <footer>   
+        <!--Details for the company -->
+
+                    <div class="abtus">
+                        <ul>
+                        <h2>About</h2>
+                        <li>
+                            <!--Address of the company-->
+                            AreoRooms
+                            <br>
+                            AreoRooms Paying Guest Booking Center
+                            <br>
+                            Phase-II  NIT Trichinopoly Research Zone
+                            <br>
+                            Tiruchirapllai-620015.
+                            </li>
+                            <li>
+                                <i class="fa fa-youtube-play" aria-hidden="true"></i> 
+                                <i class="fa fa-instagram" aria-hidden="true"></i>
+                                <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+
+                            </li>
+                            
+                            <li class="cr">
+                                &copy; AreoRooms<br>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--services offered areas-->
+                    <div class="services ftlinks">
+
+                                    <h2>Our Services</h2>
+                                    <ul>
+                                            <li>AeroRooms Banglore</li>
+                                            <li>AeroRooms Chennai</li>
+                                            <li>AeroRooms Delhi</li>
+                                            <li>AeroRooms Kochin</li>
+                                            <li>AeroRooms Trichy</li>
+                                            <li>AeroRooms Tirichur</li>
+                                    </ul>
+                    </div>
+                    <!--More in AeroRooms-->
+                    <div class="company ftlinks">
+                        <h2>Company</h2>
+                    <ul>
+                        <li>Become a Premium member</li>
+                        <li>Customer Care</li>
+                        <li>Career</li>
+                       
+                    </ul>
+                    </div>
+
+    </footer>
+  
+</body>
+<script src="./app.js"></script>
+<script>
+ //A static JQuery for   
+//creating a results..
+        $(document).ready(function () {
+            //JsonDB 
+            var result={
+                "rowhouse":
+                {
+                    "img":"../image/home1.jpg",
+                    "members":"Not more than 3 membres are allowed",
+                    "dates":"Available for a day",
+                    "beds":"No bed available"
+                },
+                "daynight":
+                {
+                    "img":"../image/home2.jpg",
+                    "members":"Not more than 2 members are allowed",
+                    "dates":"Available for 3 days",
+                    "beds":"Bed for night stays"
+                },
+                "apartments":
+                {
+                    "img":"../image/home3.jpg",
+                    "members":"Not more than 1 member is allowed",
+                    "dates":"Available for 2 days",
+                    "beds":"Bed for night stays"
+                },
+                "nature":{
+                    "img":"../image/home4.jpg",
+                    "members":"Not more than 4 members allowed",
+                    "dates":"Available for 18 hrs only",
+                    "beds":"Bed for night stays"
+                },
+                "boathouse":{
+                    "img":"../image/home6.jpg",
+                    "members":"Not more than 2 members are allowed",
+                    "dates":"Available for 5 hrs (day only)",
+                    "beds":"Bed for night stays"
+                },
+                "night":{
+                    "img":"../image/room3.jpg",
+                    "members":"More than 2 members allowed",
+                    "dates":"Available for only night",
+                    "beds":"Bed for night stays"
+                },
+                "monutain":{
+                    "img":"../image/room4.jpeg",
+                    "members":"Not more than 3 members are allowed",
+                    "dates":"Available for 2 days",
+                    "beds":"Bed for night stays"
+                },
+                "villa":{
+                    "img":"../image/room4.jpeg",
+                    "members":"Not more than 3 members are allowed",
+                    "dates":"Available for 2 days",
+                    "beds":"Bed for night stays"
+                }
+            }
+        
+            $(".homeres").hide();
+            $(".getRooms").click(function(){
+                var key=$(this).data("key");
+                var card=document.getElementById("homeres").children;
+                for(let i=0;i<card.length;i++){
+                            let img=card[i].children[0];
+                            let content=card[i].children[1];
+                            let h5=content.children[0];
+                            img.src=result[key].img;
+                            h5.children[0].innerHTML= `<i class="fa fa-user-plus" aria-hidden="true"></i>${result[key].members}`;
+                            h5.children[2].innerHTML=`<i class="fa fa-calendar" aria-hidden="true"></i>${result[key].dates}`
+                            h5.children[4].innerHTML=`<i class="fa fa-bed" aria-hidden="true"></i>${result[key].beds}`;
+                }
+                $(".homeres").slideDown();
+            })
+        })
+</script>
+</html>

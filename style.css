@@ -1,0 +1,947 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Pacifico&family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+*{
+    margin:0px;
+    padding:0px;
+    position: relative;
+    font-family: sans-serif,serif;
+
+}
+
+:root{
+    --about:#f7465d;
+    --primary-color:#6773ff;
+    --logo-color:#f0475e;
+    --placeholder-color:#d1bfbf;
+    --bg-color:whitesmoke;
+    --bg-color-g:gainsboro;
+    --bg-color-n:#ffff;
+    --border-mnu:#f5f5f5;
+    --success-color:#4caf50;
+    --new-color:#008cba;
+    --checkout-btn:#555555;
+    --regular:black;
+    --border-color: rgb(74, 168, 206);
+
+}
+
+/* menu bar with logo & links*/
+ .mnu{
+    display:flex;
+    justify-content: space-evenly;
+    align-items:center;
+    flex-wrap: wrap;
+    height:10%;
+    max-width:98%;
+    border-radius: 5px;
+    border:1px solid var(--border-mnu);
+    top:0;
+    padding: 0.5rem;
+
+}
+
+
+/*menu icon in menu bar*/
+.mnu_icon{
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px;
+    margin: 4px;
+}
+/*menu icon three dashes*/
+.mnu_icon i{
+    color:var(--checkout-btn);
+    cursor: pointer;
+    font-size: 1.5rem;
+    display:none;
+}
+
+.mnu_icon span{
+    font-family:"Pacifico",cursive;
+    font-size: 2rem;
+    font-weight: 500;
+    color:var(--logo-color);
+    letter-spacing: 1px;
+    user-select: none;
+}
+/*links in menu bar*/
+.mnu_items {
+    display: flex;
+    flex-basis: 50%;
+    margin:4px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+/* menu lists  in menu bar*/
+.mnu_items  li {
+    
+    list-style-type: none;
+    font-size: 1rem;
+    user-select: none;
+    cursor: pointer;
+    padding: 5px;
+    font-weight: 500;
+    
+}
+/*links in menu bar*/
+.mnu_items li a{
+    color:var(--regular);
+    text-decoration: none;
+}
+.mnu_items  li :hover {
+    color:var(--primary-color);
+    font-weight: medium;
+    
+}
+/*A line after menu links*/
+.mnu_items  li::after{
+    content:'';
+    height:0.20rem;
+    margin-top: 4px;
+    display: block;
+    background-color:var(--primary-color);
+    width:0%;
+    transition: width 0.5s ease-in-out;
+    border-radius: 24px;
+}
+/*menulist hover effects*/
+ #mnlist li:hover::after {
+    width:100%;
+}
+#mnlist  li:last-child i{
+    margin: 4px;
+}
+@media screen and (max-width:500px){
+    .mnu{
+        justify-content: space-between;
+        width: 99%;
+    }
+}
+@media screen and (max-width:1000px){
+    
+    .mnu_icon {
+        flex-basis: 90%;
+    }
+    .mnu_icon i{
+        display: inline-block;
+        right: 0;
+    }
+    .mnu_items{
+        display: none;
+        flex-basis: 100%;
+      
+    }
+    
+    .mnu_items  li{
+        padding:8px;
+        width: 100%;
+    }
+    .mnu_items ul li:hover{
+        background-color: var(--primary-color);
+       
+        font-weight: 700;
+       
+    }
+    .mnu_items ul li:hover a{
+        color:var(--bg-color-n);
+    }
+    .mnu_items ul li::after{
+        display: none;
+    }
+    
+}
+
+/*Search based on location,Checkin and Checkout dates*/
+.srch_box{
+    max-width: fit-content;
+    align-items: center;
+    justify-content:space-evenly;
+    padding:6px;
+    border-radius:24px;
+    border:2px solid var(--border-mnu);
+    top:10px;
+    margin:auto;
+    box-shadow: 2px 2px 2px 2px var(--bg-color);
+
+}
+/*headings for searhing */
+.srch_box label{
+    font-family:"Quicksand",sans-serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin:2px;
+
+}
+/*srch--input tag */
+.srch_box .srch{
+    padding:10px; 
+    margin: 2px;
+    border:none;
+    border-radius:24px;
+    outline: none;
+    font-size:0.75rem;
+    font-weight: 600;
+}
+/*Checkin & checkout dates*/
+.chkin:placeholder-shown,.chkout:placeholder-shown{
+    color:var(--placeholder-color);
+}
+
+/*search icon*/
+.fa-search{
+    padding:1rem;
+    border-radius: 50%;
+    background-color: var(--logo-color);
+    color:var(--bg-color-n);
+    font-weight: 600;
+    cursor: pointer;
+    
+    
+}
+.srch:hover{
+    background-color: var(--bg-color);;
+    cursor:pointer;
+}
+@media screen  and (max-width:1000px){
+    /*inp[1,2,3] a separator of input tags*/
+    .inp2,.inp3{
+        display:none;
+    }
+    .srch_box{
+        
+        padding:4px;
+        top:4px;
+    }
+    .fa-search{
+        padding: 0.75rem;
+    }
+    .srch_box label{
+        padding: 2px;
+        font-size: 0.75rem;
+        left:2px;
+    }
+    .srch_box .srch{
+        padding: 4px;
+        font-weight: medium;
+    }
+    .srch:hover{
+        background-color:transparent;
+    }
+}
+/* search by location result */
+.popup{
+    display:none;
+    flex-wrap: wrap;
+    margin-left: 3rem;
+    left:1rem;
+    top:1rem;
+    bottom: 1rem;
+    font-family: serif,sans-serif;
+    width:90%;
+    transition: display 2s ease-in-out;
+
+}
+/*dummy result box*/
+.res{
+    
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-basis: 30%;
+    margin: 2px;
+    font-family: serif,sans-serif;
+     background-color: var(--bg-color-n);
+}
+/*inner class of dummy result*/
+.srch_res{
+    border-radius: 14px;
+    border:2px solid var(--bg-color);
+}
+/*dummy result content*/
+figcaption{
+
+    font-size: 1rem;
+    padding: 2rem;
+}
+/*dummy result image*/
+figure img{
+    left:2%;
+    margin:4px;
+    height:75%;
+    width:25%;
+    border-radius:14px;
+}
+/*A global class that makes the display property as flex*/
+.flex{
+    display:flex;
+    transition:display 1s ease-in-out;
+    transition-delay: 0.2ms;
+}
+.flex:focus-within{
+    display:flex;
+}
+/*gobal class that makes font family as Poppins */
+.font{
+    font-family: "Poppins",sans-serif;
+}
+@media screen  and (max-width:900px){
+    .popup{
+        justify-content: center;
+        margin:1rem;
+    }
+    .res{
+        flex-basis: 90%;
+    }
+}
+
+/*header*/
+.hd{
+    justify-content: center;
+    align-items:center;
+    width:95%;
+    top:1rem;
+    flex-wrap: nowrap;
+    padding: 1rem;
+    
+}
+.hd span{
+    font-weight: 500;
+    font-size:40px;
+    flex-basis: 40%;
+}
+
+.hd img{
+    height: 400px;
+    margin:4px;
+
+}
+.hd #count{
+    font-family:"Josefin Sans",sans-serif;
+    font-size: 60px;
+    color:var(--logo-color);
+    font-weight: bold;
+}
+@media screen and (max-width:1000px){
+    
+    .hd span,.hd #count{
+        font-size: 14px;
+        line-height: 25px;
+        font-weight: 600;
+    }
+    .hd span{
+        flex-basis: 60%;
+    }
+    .hd img{
+        height:175px;
+        width: 40%;
+    }
+}
+/*Searching rooms based on the option*/
+.expby{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    margin:1rem;
+    column-gap: 10px;      
+    padding:10px;    
+  
+}
+/*Explore by*/
+.expby h2{
+    font-family:"Josefin Sans",sans-serif;
+    font-size: 1.5rem;
+    padding: 1rem;
+
+}
+.row1,
+.row2{
+    grid-column-start: 1;
+    grid-column-end: 4;
+    justify-content: space-between;
+    align-items:center;
+    margin:1.5rem;
+
+}
+@media screen and (max-width:1000px){
+    
+    .row1,.row2{
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-direction: column;
+        width: fit-content;
+
+    }
+    
+    
+}
+@media screen and (max-width:500px){
+    
+    .row2{
+        transform: translateY(-10%);
+    }
+    
+    
+}
+
+
+.row2  .flex:nth-child(2){
+    transform: translateX(15%);
+}
+.row2 .flex:nth-child(3){
+    transform: translateX(10%);
+}
+@media screen and (max-width:1000px){
+    
+    .row2 .flex:nth-child(2),
+    .row2 .flex:nth-child(3){
+        transform: translateX(0%);
+    }
+    
+}
+/*constrains in explore by*/
+
+.row1 h3,.row2 h3{
+    font-size: 1rem;
+    padding:1rem;
+    margin:2px;
+}
+.row1 h3 span,.row2 h3 span{
+    font-size: 1rem;
+}
+
+.row1 h4,.row2 h4{
+    color:var(--about);
+    margin:2px;
+}
+.row1 img,.row2 img{
+    height: 100px;
+    width: 100px;
+    border-radius: 10px;
+    top:20px;
+}
+/*get rooms button*/
+.row1 .btn,.row2 .btn{
+    display: inline-block;
+    padding:10px;
+    margin: 2px;
+    font-size: 10px;
+    background-color: var(--bg-color);
+    border-radius: 24px;
+    border:1px solid var(--placeholder-color);
+    outline: none;
+    cursor:pointer;
+    font-weight: 600;
+}
+.row1 .btn:hover,.row2 .btn:hover{
+    background-color: orange;
+    color:white;
+}
+.row1 .btn:focus,.row2 .btn:focus{
+    background-color: orange;
+    color:white;
+    outline:1px solid var(--placeholder-color);
+}
+
+@media screen and (max-width:500px){
+
+    .row1 h3,.row2 h3{
+        margin:4px;
+        font-size:8px;
+    }
+    .row1 ,.row2{
+        width:90%;
+    }
+    .row1 h4,.row2 h4{
+        font-size: 8px;
+    }
+    .row1 .btn,.row2 .btn{
+        padding:6px;
+        font-size: 8px;
+    }
+}
+/*booking rooms card */
+.rowres{
+    margin:4px;
+    padding:4px;
+    flex-wrap:wrap;
+    flex-direction: row;
+    flex-grow: 1;
+    justify-content: space-between;
+    align-items: center;
+    row-gap: 10px;
+    width: 99%;
+}
+/*Rooms Details*/
+.card {
+    border-radius:10px;
+    border:2px solid #f5f5f5;
+    justify-content: flex-start;
+    align-items:center;
+    flex-wrap: nowrap;
+    margin:2px;
+    height:150px;
+    width:450px;
+}
+/*Rooms images*/
+.card img{
+    flex-basis:35%;
+    aspect-ratio: 4/3;
+    border-radius:2px;
+    height:100%
+}
+/*Room Details*/
+.content{
+    display:inline-block;
+    font-family: sans-serif,serif;
+    font-size: 1rem;
+    font-weight: normal;
+    user-select: none;
+    padding: 4px;
+    margin:5px;
+
+}
+.content h5{
+    font-family: "Poppins",serif,sans-serif;
+    font-weight: 500;
+    line-height: 25px;
+    font-size: 12px;
+    
+    
+}
+/*Bed , Calendar , members icon */
+.content i{
+    padding:4px;
+    color:var(--checkout-btn);
+}
+/*Stars*/
+.ratings{
+    display: block;
+    width:100%;
+    color:var(--about);
+    font-size: 18px;
+}
+/*book button*/
+.chkbtn{
+    cursor:pointer;
+    margin:4px;
+    padding:8px;
+    font-size: 14px;
+    color:#ffff;
+    font-weight: 600;
+    border-radius:5px;
+    border:1px solid var(--success-color);
+    background-color: var(--success-color);
+}
+@media screen and (max-width:1000px){
+    .card{
+        flex-wrap:nowrap;
+    }
+}
+@media screen and (max-width:800px){
+    .card{
+        flex-wrap:wrap;
+    }
+    .card{
+        justify-content: space-between;
+        align-items: flex-start;
+        height:300px;
+        width:200px;
+    }
+    .card img{
+        height:40%;
+        flex-basis: 100%;
+    }
+}
+/*About Us component*/
+#about{
+    margin:10px;
+    padding:10px;
+}
+/*About Us*/
+#about h2{
+    font-family: "Poppins",sans-serif;
+    letter-spacing: 1px;
+    text-decoration: underline;
+    font-size: 30px;
+}
+/*Wrapper of About us Content & Image*/
+.slides{
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height:400px;
+    padding: 10px;
+    
+}
+/*About us content*/
+.slides h3{
+    font-family:"Josefin Sans",sans-serif,'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 400;
+    flex-basis: 50%;
+    font-size: 30px;
+    line-height: 50px;
+    color:var(--about);
+}
+/*About us Image*/
+.slides img{
+    height:300px;
+    width:40%;
+    user-select: none;
+}
+@media screen and (max-width:1000px){
+    .slides{
+        height: fit-content;
+        line-height: normal;
+    }
+    .slides h2{
+        font-size: 1.5rem;
+    }
+    .slides h3{
+        flex-basis: 40%;
+        font-size: 1.5rem;
+        line-height: 20px;
+    }
+}
+@media screen and (max-width:800px){
+   
+    .slides h3{
+        flex-basis: 50%;
+        font-size: 1rem;
+    }
+   
+   
+    .slides img{
+        height:200px;
+        flex-basis:50%;
+    }
+}
+
+/*inline form for hostexperience,signin,signup*/
+/*Hostexperience Form-- #hstexp*/
+/*SignIn Form --#signin*/
+/*SignUp Form --#signup*/
+
+
+#allforms{
+    height:500px;
+    width:89%;
+    padding: 10px;
+    margin:auto;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 4px; 
+    column-gap: 4px;
+    margin-bottom: 8px;
+    background-image: url(../image/background1.jpg);
+    background-attachment: cover;
+    background-repeat: no-repeat;
+}
+/*div section a wrapper of sign,signup,hostexperience*/
+#allforms .inner{
+    transform: translateY(-10%);
+    justify-content: left;
+    align-items: center;
+    flex-wrap: wrap;
+    margin:4px;   
+    bottom: 5px;
+}
+
+#allforms fieldset{
+    
+    border:1px solid transparent;
+    box-sizing: border-box;
+    padding:6px 10px;
+    border-radius: 18px;
+    margin: 2px;
+    background-color:var(--bg-color-n);
+}
+/*Form heading*/
+#allforms legend{
+    font-family:"Poppins",sans-serif;
+    font-size: 1.25rem;
+    margin:5px;
+    padding: 8px 10px;
+    user-select: none;
+    font-weight: 600;
+    letter-spacing:1px;
+    color:var(--bg-color-n);
+    background-color:var(--success-color);
+    border-radius: 18px;
+}
+
+#signin,#signup{
+    display: none;
+}
+#signin{
+    flex-basis: 100%;
+}
+#signup{
+    flex-wrap: wrap;
+    flex-basis: 80%;
+}
+/*Sign in with Google button*/
+#signup .Gbtn{
+    display: flex;
+    justify-content: space-evenly;
+    padding:5px;
+    margin: 5px;
+    border: 2px solid var(--bg-color);
+    box-shadow: 1px 1px 1px 1px var(--bg-color);
+    background-color: var(--bg-color-n);
+    border-radius: 24px;
+    outline-color: coral;
+}
+#signup .Gbtn img{
+    height: 40px;
+    width: 30px;
+    border-radius: 50%;
+}
+#signup .Gbtn .button{
+    font-size: 12px;
+    padding:5px;
+    margin: 5px;
+    cursor: pointer;
+    font-family: "Poppins",sans-serif;
+    background-color: transparent;
+    outline: none;
+    border:1px solid transparent;
+
+}
+#allforms label{
+    font-family: sans-serif;
+    margin:4px;
+    font-weight: 700;
+    user-select: none;
+}
+
+#allforms input,#allforms textarea{
+    font-family: "Josefin Sans",sans-serif,serif;
+    font-size: 1rem;
+    font-weight: 500;
+    padding:10px 12px;
+    border:1px solid var(--placeholder-color);
+    outline: none;
+    margin:5px;
+    border-radius: 5px;
+}
+#allforms input[type="submit"]{
+    font-family: "Poppins",sans-serif;
+    color:var(--bg-color-n);
+    border:2px solid var(--regular);
+    background-color: var(--regular);
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 5px 6px;
+    letter-spacing: 1px;
+    user-select: none;
+    cursor:pointer;
+    }
+
+#allforms input[type="button"]{
+    font-family: "Poppins",sans-serif;
+    color:var(--regular);
+    background-color: var(--bg-color-g);
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 5px 6px;
+    letter-spacing: 1px;
+    user-select: none;
+    cursor:pointer;
+    }
+
+textarea{
+    resize: none;
+}
+#allforms input:focus,
+#allforms textarea:focus{
+    border: 3px solid var(--border-color);
+    
+}
+#allforms input[type="button"]:focus,
+#allforms input[type="submit"]:focus{
+    border: 1px solid var(--border-color);
+    
+
+}
+@media screen and (max-width:800px){
+    #allforms legend{
+        font-size: 10px;
+    }
+    #allforms fieldset{
+        padding: 4px;
+        background-color: transparent;
+    }
+    #allforms input{
+        padding: 10px;
+        margin:4px;
+    }
+    #allforms input[type="submit"],#allforms input[type="button"]{
+        font-weight: 500;
+        font-size: 10px;
+    }
+    #signup .Gbtn{
+        height:20%;
+        border-width: 2px;
+        margin-bottom: 10px;
+    }
+    #signup .Gbtn img{
+        height: 25px;
+        width:20px;
+    }
+    #signup .Gbtn .button{
+        font-size: 12px;
+        padding:2px;
+        margin: 2px;
+        cursor: pointer;
+        font-family: "Poppins",sans-serif;
+        
+    
+    }
+    textarea{
+        height: 100px;
+        width:90%;
+    }
+}
+/*footer section*/
+/*About us .abtus*/
+/*Service offered areas  .services*/
+/*More in aerorooms  company*/
+
+footer{
+    height:350px;
+    display: flex;
+    justify-content:space-between;
+    align-items: flex-start;
+    background-color:var(--bg-color);
+    color:var(--regular);
+    padding:10px;
+    font-family: 'Poppins',sans-serif,'Times New Roman', Times, serif;
+}
+
+/*footer headings*/
+footer  h2{
+    font-size: 1rem;
+    font-weight: medium;
+    margin:2px;
+}
+/*Contents and External links in footer*/
+footer li{
+    padding:5px;
+    font-size: 14px;
+    list-style-type: none;
+    user-select: none;
+}
+footer div{
+    margin:6px;
+    padding:1rem;
+}
+/* icons in About us */
+footer .abtus i{
+    font-size: 1rem;
+    padding: 4px;
+    cursor: pointer;
+}
+footer .abtus li{
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: 1px;
+
+}
+/*Animating footer links with ftlinks*/
+footer .ftlinks{
+    cursor: pointer;
+}
+footer .ftlinks li:hover{
+    text-decoration: underline;
+    color:var(--primary-color);
+}
+/*Copyright in about us*/
+footer .abtus .cr{
+    cursor: default;
+}
+footer .abtus .cr:hover{
+    text-decoration: none;
+    color:var(--regular);
+}
+
+/*Backend info*/
+.backend{
+    position: fixed;
+    margin:10px;
+    bottom: 0;
+    left:0;
+    z-index: 1;
+}
+/* avatar image in poup */
+.backend .round{
+    position: sticky;
+    background-color: var(--bg-color-n);
+    border-radius:50%;
+    margin:2px;
+    width:fit-content;
+    
+}
+.round img{
+    height: 50px;
+    width:50px;  
+    border-radius: 50%;  
+}
+/*backend information*/
+.backend .msg{
+    
+    height: fit-content;
+    width:fit-content;
+    margin:2px;
+    padding:12px;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color:var(--bg-color-n);
+    font-family: "Poppins",sans-serif,'Times New Roman', Times;
+    background-color: var(--success-color);
+    border-radius: 18px;
+    border:2px solid var(--bg-color);
+    box-shadow: 1px 1px 1px 1px var(--bg-color);
+}
+@media screen and (max-width:1000px){
+    footer{
+        
+        justify-content: space-around;
+        align-items: flex-start;
+        height:400px;
+    }
+    footer div{
+        margin:2px;
+        padding:5px;
+    }
+    footer .services li,
+    footer .abtus li,
+    footer .company li{
+        padding: 2px;
+        font-size: 14px;
+    }
+}
+@media screen and (max-width:800px){
+   footer{
+       transform: translateY(-10%);
+            height: fit-content;
+            width:max-content;
+            background-color: var(--bg-color-n);
+        justify-content: space-evenly;
+        flex-direction: column;
+        height: 800px;
+    }
+    
+    footer .services li,
+    footer .abtus li,
+    footer .company li{
+        font-size: 12px;
+    }
+    .backend .msg{
+        padding:8px;
+        font-size: 10px;
+    }
+}
