@@ -1,7 +1,12 @@
 # guest-room-booking-app
+
+
 ##A front end part of a paying guest booking application.
+
+
 ###In this repo I had attached html,css,js and image files..
 
+First try to download all files in this repository
 
 To run this application 
 
