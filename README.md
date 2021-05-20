@@ -16,15 +16,15 @@ To run this application
 
   Step 1: Create a folder with two sub foldres with same tree level as given below
           1.Main-Folder/ 
-                      1.public
-                      2.images
+                      public
+                      images
                       
                       
   Step 2: Inside the public keep the index.html , style.css ,app.js files 
           1.public/
-            1.1 index.html
-            1.2 style.css
-            1.3 app.js
+            index.html
+            style.css
+            app.js
             
             
   Step 3:Inside the images keep all image files (.jpg,png,jpeg)
