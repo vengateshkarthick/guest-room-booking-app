@@ -6,7 +6,10 @@
 
 ###In this repo I had attached html,css,js and image files..
 
-First try to download all files in this repository
+
+First Go to Files in this repository
+
+Try to download all files in this repository
 
 To run this application 
 
